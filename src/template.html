@@ -6,18 +6,44 @@
     <title>Document</title>
 </head>
 <body>
-    <nav>Dashboard</nav>
     <div class="container">
         <div class="projects">
             <div class="project-headline">Project list</div>
             <div class="project-list">
                         <div>
-                            <input type="submit" value="+"></input>
+                            <input type="button" value="+"></input>
                             <input type="text" id="new-project" placeholder="New Project Name">
+                        </div>
+                        <div class="new-projects">
+                            <div class="default-project">Inbox</div>
                         </div>
             </div>
         </div>
-        <div class="to-do"></div>
+        <div class="to-do">
+         <h1 class="todo-headline">TO-D0-LIST</h1>
+         <div class="to-dos">
+            <button type="button" class="todo-button">Add To-Do</button>
+            <div class="to-do-list">
+                <div class="new-todo">
+                    <span>
+                        <input type="checkbox" name="check" id="check">
+                    </span>
+                    <span>
+                        <div>Title</div>
+                        <div>Basketball</div>
+                    </span>
+                     <span>
+                        <div>Due-date</div>
+                        <input type="datetime-local"></input>
+                    </span>
+                     <span>
+                        <div>Priority</div>
+                        <div>High</div>
+                    </span>
+                </div>
+            </div>
+         </div>
+        </div>
     </div>
 </body>
 </html>

@@ -4,7 +4,10 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: rgb(96, 88, 216);
     height: 100vh;
-    justify-items: center;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 nav {
@@ -42,4 +45,81 @@ nav {
 .project-list {
     border: 1px solid black;
     padding: 5px;
+    display: grid;
+    grid-template-rows: 0.5fr 12fr;
+}
+
+.new-projects {
+    border: 1px solid black;
+}
+
+.to-do {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    padding: 10px;
+    gap: 10px;
+}
+
+.to-do > div {
+    border: 1px solid black;
+}
+
+.todo-headline {
+    font-family: Impact;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #8B9DBA;
+    text-shadow: 3px 2px 2px #1C6EA4;
+    margin: auto;
+}
+
+.to-dos {
+    padding: 5px;
+    display: grid;
+    grid-template-rows: 1fr 12fr;
+    gap: 5px;
+}
+
+.todo-button {
+    width: 300px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    color: white;
+    background: #1C6EA4;
+    background: -webkit-linear-gradient(left, #1C6EA4 0%, #2388CB 50%, #144E75 100%);
+}
+
+.todo-button:hover {
+background: #1C6EA4; }
+.todo-button:active {
+background: #144E75; }
+
+.to-do-list {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.new-todo {
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+.new-todo > span {
+    border: 1px solid blue;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+}
+
+span div:first-child {
+    color: #1C6EA4;
+}
+
+.new-todo span:first-child {
+    display: flex;
+    border: none;
 }
