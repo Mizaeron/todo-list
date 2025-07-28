@@ -34,14 +34,42 @@
                     </span>
                      <span>
                         <div>Due-date</div>
-                        <input type="datetime-local"></input>
+                        <div>DATE</div>
                     </span>
                      <span>
                         <div>Priority</div>
                         <div>High</div>
                     </span>
+                     <span>
+                        <div>DELETE</div>
+                    </span>
+                     <span>
+                        <div>EDIT</div>
+                    </span>
                 </div>
             </div>
+         </div>
+         <div id="form" class="form-container">
+            <h2>To-Do Form</h2>
+            <form action="example.com"  method="post">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title">
+                <br>
+                <label for="due-date">Due-date:</label> 
+                <input type="datetime-local" name="due-date" id="due-date">
+                <br>
+                <label for="priority">Priority:</label>
+                <select name="priority" id="priority">
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+                <br>
+                <div>
+                    <label for="description">description</label>
+                    <textarea name="description" id="description" cols="30" rows="8"></textarea>
+                </div>
+            </form>
          </div>
         </div>
     </div>
