@@ -106,6 +106,7 @@ background: #144E75; }
     display: flex;
     justify-content: space-around;
     padding: 5px;
+    display: none; /* temp */
 }
 
 .new-todo > span {
@@ -125,5 +126,25 @@ span div:first-child {
 }
 
 #form {
+    display: none;
+}
+
+.projects {
+    font-size: 1.5rem;
+}
+
+.new-projects div {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+}
+
+.new-projects div:hover {
+    background-color: #3d7faa;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.new-projects img {
     display: none;
 }
