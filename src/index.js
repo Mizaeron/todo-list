@@ -1,9 +1,10 @@
 import "./styles.css";
 import {compareAsc, format} from "date-fns";
 import { addProject, defaultProject} from "./project-dom";
+import { deleteDefaultProject } from "./project";
 
 format(new Date(1, 11, 2014), "dd-MM-yyyy");
 
 addProject();
 defaultProject();
-
+deleteDefaultProject();

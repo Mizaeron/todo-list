@@ -5,6 +5,12 @@ export function addProject() {
     const newProjectBtn = document.querySelector(".project-btn");
     const newProjectInput = document.getElementById("new-project");
 
+    newProjectContainer.addEventListener("click", (e) => {
+    if (e.target.tagName === "IMG") {
+        e.target.parentElement.remove();
+    }
+})
+
     newProjectBtn.addEventListener("click", (e) => {
         const newProjectDiv = document.createElement("div");
         newProjectDiv.classList.add("new-project");
@@ -25,7 +31,6 @@ export function addProject() {
         newProjectDiv.addEventListener("mouseout", (e) => {
         trashImage.style.display = "none";
 })
-
         
     })
 
@@ -48,6 +53,3 @@ inbox.addEventListener("mouseout", (e) => {
 })
 
 }
-
-
-
