@@ -14,14 +14,15 @@ nav {
     margin: 20px;
 }
 .container {
+    background-color: rgba(236, 156, 6);
     display: grid;
     grid-template-columns: 1fr 5fr;
-    background-color: orange;
     padding: 10px;
     gap: 10px;
     height: 90vh;
     width: 90vw;
     border-radius: 5px;
+    position: relative;
 }
 
 .container > div {
@@ -103,7 +104,6 @@ background: #144E75; }
     width: auto;
     height: auto;
     border: 1px solid black;
-    display: flex;
     justify-content: space-around;
     padding: 5px;
     display: none; /* temp */
@@ -125,8 +125,32 @@ span div:first-child {
     border: none;
 }
 
-#form {
+.form-container {
+    background-color: rgb(255, 255, 255);
     display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px;
+    width: 500px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    color: rgb(12, 12, 12);
+}
+
+.form-container h2 {
+    text-align: center;
+}
+
+.top-form {
+    padding: 10px;
+}
+
+.bottom-form {
+    padding: 10px;
+    text-align: center;
 }
 
 .projects {
