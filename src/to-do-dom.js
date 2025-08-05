@@ -3,8 +3,28 @@ export function displayForm() {
     const formContainer = document.querySelector(".form-container");
     const container = document.querySelector(".container");
 
-    formButton.addEventListener("click", (e) => {
+    
+        formButton.addEventListener("click", (e) => {
+        e.stopPropagation();
         container.style.backgroundColor = "rgba(236, 156, 6, 0.5)"
-        formContainer.style.cssText = "display: flex";     
+        formContainer.style.display = "flex";
+    })
+
+}
+
+export function closeForm() {
+    const container = document.querySelector(".container");
+    const formContainer = document.querySelector(".form-container");
+
+
+    container.addEventListener("click", (e) => {
+        if(formContainer.style.display === "flex") {
+            formContainer.style.display = "none";
+            container.style.backgroundColor = "";
+        }
+    })
+
+    formContainer.addEventListener("click", (e) => {
+        e.stopPropagation();
     })
 }
