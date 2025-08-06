@@ -3,6 +3,7 @@ import {compareAsc, format} from "date-fns";
 import { addProject, defaultProject} from "./project-dom";
 import { deleteDefaultProject } from "./project";
 import { displayForm, closeForm } from "./to-do-dom";
+import { todoFactory } from "./to-do";
 
 format(new Date(1, 11, 2014), "dd-MM-yyyy");
 
@@ -11,3 +12,4 @@ defaultProject();
 deleteDefaultProject();
 displayForm();
 closeForm();
+todoFactory();

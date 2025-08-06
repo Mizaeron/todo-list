@@ -106,7 +106,7 @@ background: #144E75; }
     border: 1px solid black;
     justify-content: space-around;
     padding: 5px;
-    display: none; /* temp */
+    display: flex; /* temp */
 }
 
 .new-todo > span {
