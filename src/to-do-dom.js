@@ -29,14 +29,19 @@ export function closeForm() {
     })
 }
 
-export function submitForm(call) {
+export function submitForm(callback) {
     const myForm = document.getElementById("myForm");
+    const formContainer = document.querySelector(".form-container");
+    const container = document.querySelector(".container");
 
     myForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const formProps = Object.fromEntries(formData);
-        call(formProps);
+        callback(formProps);
+        formContainer.style.display = "none";
+        container.style.backgroundColor = "";
+        myForm.reset();
     })
 }
 

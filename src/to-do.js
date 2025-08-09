@@ -2,7 +2,7 @@ import { format } from "date-fns";
 
 const toDoList = document.querySelector(".to-do-list");
 
-export function todoFactory(title, date) {
+export function todoFactory(title, date, priority) {
     return {
         displayCheckbox() {
             const div = document.createElement("div");
@@ -34,6 +34,34 @@ export function todoFactory(title, date) {
             span.append(dateDiv);
             headingDiv.innerText = "Due-date";
             dateDiv.innerText = format(new Date(date), 'HH:mm dd/MM/yyyy');
+        },
+        displayPriority() {
+            const headingDiv = document.createElement("div");
+            const priorityDiv = document.createElement("div");
+            const span = document.createElement("span");
+            toDoList.lastChild.append(span);
+            span.append(headingDiv);
+            span.append(priorityDiv);
+            headingDiv.innerText = "Priority";
+            priorityDiv.innerText = priority;
+        },
+        displayDelete() {
+            const headingDiv = document.createElement("div");
+            const deleteDiv = document.createElement("div");
+            const span = document.createElement("span");
+            toDoList.lastChild.append(span);
+            span.append(headingDiv);
+            span.append(deleteDiv);
+            headingDiv.innerText = "Delete";
+        },
+        displayEdit() {
+            const headingDiv = document.createElement("div");
+            const editDiv = document.createElement("div");
+            const span = document.createElement("span");
+            toDoList.lastChild.append(span);
+            span.append(headingDiv);
+            span.append(editDiv);
+            headingDiv.innerText = "Edit";
         }
     }
 }

@@ -11,11 +11,12 @@ displayForm();
 closeForm();
 
 submitForm((formProps) => {
-    const { title, dueDate } = formProps;
-    const newTodo = todoFactory(title, dueDate);
+    const { title, dueDate, priority } = formProps;
+    const newTodo = todoFactory(title, dueDate, priority);
     newTodo.displayCheckbox();
     newTodo.displayTitle();
     newTodo.displayDate();
+    newTodo.displayPriority();
+    newTodo.displayDelete();
+    newTodo.displayEdit();
 })
-
-console.log(submitForm(formProps));
