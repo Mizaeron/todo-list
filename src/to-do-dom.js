@@ -28,3 +28,15 @@ export function closeForm() {
         e.stopPropagation();
     })
 }
+
+export function submitForm(call) {
+    const myForm = document.getElementById("myForm");
+
+    myForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const formProps = Object.fromEntries(formData);
+        call(formProps);
+    })
+}
+

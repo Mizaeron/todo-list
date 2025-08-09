@@ -1,15 +1,21 @@
 import "./styles.css";
-import {compareAsc, format} from "date-fns";
 import { addProject, defaultProject} from "./project-dom";
 import { deleteDefaultProject } from "./project";
-import { displayForm, closeForm } from "./to-do-dom";
+import { displayForm, closeForm, submitForm } from "./to-do-dom";
 import { todoFactory } from "./to-do";
-
-format(new Date(1, 11, 2014), "dd-MM-yyyy");
 
 addProject();
 defaultProject();
 deleteDefaultProject();
 displayForm();
 closeForm();
-todoFactory();
+
+submitForm((formProps) => {
+    const { title, dueDate } = formProps;
+    const newTodo = todoFactory(title, dueDate);
+    newTodo.displayCheckbox();
+    newTodo.displayTitle();
+    newTodo.displayDate();
+})
+
+console.log(submitForm(formProps));

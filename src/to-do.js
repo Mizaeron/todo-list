@@ -1,22 +1,39 @@
-const toDoList = document.querySelector(".to-do-list");
-const div = document.createElement("div");
-const span = document.createElement("span");
-const displayDiv = document.createElement("div");
+import { format } from "date-fns";
 
-export function todoFactory(title) {
+const toDoList = document.querySelector(".to-do-list");
+
+export function todoFactory(title, date) {
     return {
-        title,
-        display() {
+        displayCheckbox() {
+            const div = document.createElement("div");
+            const span = document.createElement("span");
+            const checkbox = document.createElement("input")
+            checkbox.setAttribute("type", "checkbox");
+            checkbox.setAttribute("name", "check");
             toDoList.append(div);
+            div.classList.add("new-todo");
             div.append(span);
-            span.append(displayDiv);
-            displayDiv.innerText = "haaa";
+            span.append(checkbox);
+        },
+        displayTitle() {
+            const headingDiv = document.createElement("div");
+            const titleDiv = document.createElement("div");
+            const span = document.createElement("span");
+            toDoList.lastChild.append(span);
+            span.append(headingDiv);
+            span.append(titleDiv);
+            headingDiv.innerText = "Title";
+            titleDiv.innerText = title;
+        },
+        displayDate() {
+            const headingDiv = document.createElement("div");
+            const dateDiv = document.createElement("div");
+            const span = document.createElement("span");
+            toDoList.lastChild.append(span);
+            span.append(headingDiv);
+            span.append(dateDiv);
+            headingDiv.innerText = "Due-date";
+            dateDiv.innerText = format(new Date(date), 'HH:mm dd/MM/yyyy');
         }
     }
 }
-
-let firstTitle = todoFactory("football");
-
-firstTitle.display();
-
-console.log(displayDiv)
