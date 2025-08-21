@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: rgb(96, 88, 216);
@@ -12,6 +13,12 @@ body {
 
 nav {
     margin: 20px;
+}
+
+.console {
+    position: absolute;
+    left: 0%;
+    top: 2%;
 }
 .container {
     background-color: rgba(236, 156, 6);
@@ -166,7 +173,7 @@ span div:first-child {
 }
 
 .new-projects div:hover {
-    background-color: #3d7faa;
+    background-color: rgb(255, 255, 255, 0.3);
     margin-right: 0px;
     margin-left: 0px;
     cursor: pointer;
@@ -174,10 +181,15 @@ span div:first-child {
 
 .new-projects img {
     display: none;
+    border: none;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    background-color: #ff6f91;
 }
 
 .new-projects img:hover {
-    background-color: rgb(11, 236, 236);
+    background-color: rgba(255, 255, 255, 0.7);
+    transform: scale(1.2);
 }
 
 .submit-div {

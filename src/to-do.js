@@ -1,6 +1,8 @@
 import { format } from "date-fns";
+import { newProjectArray } from "./project-dom";
 
 const toDoList = document.querySelector(".to-do-list");
+const inbox = document.querySelector(".default-project");
 
 export function todoFactory(title, date, priority) {
     return {
@@ -62,6 +64,22 @@ export function todoFactory(title, date, priority) {
             span.append(headingDiv);
             span.append(editDiv);
             headingDiv.innerText = "Edit";
+        },
+        selectProject() {
+            const select = document.createElement("select");
+            const span = document.createElement("span");
+            const option = document.createElement("option");
+            toDoList.lastChild.append(span);
+            span.append(select);
+            select.classList.add("project-select");
+            option.innerText = inbox.innerText;
+            select.append(option);
+
+            newProjectArray.forEach(name => {
+                const option = document.createElement('option');
+                option.textContent = name;
+                select.append(option);
+            })   
         }
     }
 }

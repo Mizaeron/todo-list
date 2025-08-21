@@ -1,4 +1,6 @@
+import { todoFactory } from "./to-do";
 import trash from "./trash-2.svg";
+export const newProjectArray = [];
 
 export function addProject() {
     const newProjectContainer = document.querySelector(".new-projects");
@@ -31,8 +33,13 @@ export function addProject() {
         newProjectDiv.addEventListener("mouseout", (e) => {
         trashImage.style.display = "none";
 })
-        
-    })
+         newProjectArray.push(newProjectDiv.innerText);
+         
+         const option = document.createElement("option");
+         option.innerText = newProjectDiv.innerText;
+         document.querySelectorAll("select.project-select").forEach(sel => sel.append(option.cloneNode(true)));
+
+})
 
     
 }
