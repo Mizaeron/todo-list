@@ -8,8 +8,29 @@ export function addProject() {
     const newProjectInput = document.getElementById("new-project");
 
     newProjectContainer.addEventListener("click", (e) => {
-    if (e.target.tagName === "IMG") {
-        e.target.parentElement.remove();
+        const projectEl = e.target.closest(".new-project");
+        if(!projectEl) return;
+    if (e.target && e.target.parentElement.classList.contains("new-project")) {
+        const textContent = projectEl.innerText.trim();
+        
+        const index = newProjectArray.indexOf(textContent);
+        if (index !== -1) {
+            newProjectArray.splice(index, 1);
+
+            projectEl.remove();
+
+            const selectMenus = document.querySelectorAll("select");
+
+            selectMenus.forEach(selectMenu => {
+                const optionList = Array.from(selectMenu.options);
+
+                optionList.forEach(option => {
+                    if (option.text.trim() === textContent) {
+                        selectMenu.remove(option.index);
+                    }
+                })
+            })
+        }
     }
 })
 
