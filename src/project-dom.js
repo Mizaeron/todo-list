@@ -1,4 +1,3 @@
-import { todoFactory } from "./to-do";
 import trash from "./trash-2.svg";
 export const newProjectArray = [];
 
@@ -35,6 +34,12 @@ export function addProject() {
 })
 
     newProjectBtn.addEventListener("click", (e) => {
+
+        if (newProjectInput.value.length < 2) {
+            alert("project name must have at least 2 characters!");
+            e.preventDefault();
+        } else {
+        e.preventDefault();
         const newProjectDiv = document.createElement("div");
         newProjectDiv.classList.add("new-project");
 
@@ -60,7 +65,7 @@ export function addProject() {
          option.innerText = newProjectDiv.innerText;
          document.querySelectorAll("select.project-select").forEach(sel => sel.append(option.cloneNode(true)));
 
-})
+}})
 
     
 }
