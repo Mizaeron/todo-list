@@ -1,3 +1,4 @@
+import edit from "./edit.png";
 import { format } from "date-fns";
 import { newProjectArray } from "./project-dom";
 
@@ -18,33 +19,24 @@ export function todoFactory(title, date, priority) {
             span.append(checkbox);
         },
         displayTitle() {
-            const headingDiv = document.createElement("div");
             const titleDiv = document.createElement("div");
             const span = document.createElement("span");
             toDoList.lastChild.append(span);
-            span.append(headingDiv);
             span.append(titleDiv);
-            headingDiv.innerText = "Title";
             titleDiv.innerText = title;
         },
         displayDate() {
-            const headingDiv = document.createElement("div");
             const dateDiv = document.createElement("div");
             const span = document.createElement("span");
             toDoList.lastChild.append(span);
-            span.append(headingDiv);
             span.append(dateDiv);
-            headingDiv.innerText = "Due-date";
             dateDiv.innerText = format(new Date(date), 'HH:mm dd/MM/yyyy');
         },
         displayPriority() {
-            const headingDiv = document.createElement("div");
             const priorityDiv = document.createElement("div");
             const span = document.createElement("span");
             toDoList.lastChild.append(span);
-            span.append(headingDiv);
             span.append(priorityDiv);
-            headingDiv.innerText = "Priority";
             priorityDiv.innerText = priority;
         },
         displayDelete() {
@@ -57,13 +49,11 @@ export function todoFactory(title, date, priority) {
             headingDiv.innerText = "Delete";
         },
         displayEdit() {
-            const headingDiv = document.createElement("div");
-            const editDiv = document.createElement("div");
+            const editImage = document.createElement("img");
+            editImage.src = edit;
             const span = document.createElement("span");
             toDoList.lastChild.append(span);
-            span.append(headingDiv);
-            span.append(editDiv);
-            headingDiv.innerText = "Edit";
+            span.append(editImage);
         },
         selectProject() {
             const select = document.createElement("select");

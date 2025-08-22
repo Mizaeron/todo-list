@@ -70,19 +70,19 @@ export function addProject() {
     
 }
 
-export function defaultProject() {
+// export function defaultProject() {
 
-const inbox = document.querySelector(".default-project");
-const trashImage = document.createElement("img");
-trashImage.src = trash;
-inbox.append(trashImage);
+// const inbox = document.querySelector(".default-project");
+// const trashImage = document.createElement("img");
+// trashImage.src = trash;
+// inbox.append(trashImage);
 
-inbox.addEventListener("mouseover", (e) => {
-    trashImage.style.display = "block";
-})
+// inbox.addEventListener("mouseover", (e) => {
+//     trashImage.style.display = "block";
+// })
 
-inbox.addEventListener("mouseout", (e) => {
-    trashImage.style.display = "none";
-})
+// inbox.addEventListener("mouseout", (e) => {
+//     trashImage.style.display = "none";
+// })
 
-}
+// }

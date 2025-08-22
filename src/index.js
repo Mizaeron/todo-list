@@ -1,12 +1,9 @@
 import "./styles.css";
-import { addProject, defaultProject, newProjectArray } from "./project-dom";
-import { deleteDefaultProject } from "./project";
+import { addProject, newProjectArray } from "./project-dom";
 import { displayForm, closeForm, submitForm } from "./to-do-dom";
 import { todoFactory } from "./to-do";
 
 addProject();
-defaultProject();
-deleteDefaultProject();
 displayForm();
 closeForm();
 

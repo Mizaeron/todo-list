@@ -76,7 +76,7 @@ nav {
     font-family: Impact;
     font-size: 3rem;
     font-weight: bold;
-    color: #8B9DBA;
+    color: #1359ca;
     text-shadow: 3px 2px 2px #1C6EA4;
     margin: auto;
 }
@@ -113,18 +113,29 @@ background: #144E75; }
     border: 1px solid black;
     justify-content: space-around;
     padding: 5px;
-    display: flex; /* temp */
+    display: flex;
 }
 
 .new-todo > span {
-    border: 1px solid blue;
+    display: flex;
     padding: 5px;
     margin: 5px;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
-span div:first-child {
-    color: #1C6EA4;
+.new-todo > span img {
+    background-color: oklch(95.6% 0.045 203.388);
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    width: 30px;
+    height: auto;
+}
+
+.new-todo > span img:hover {
+    background-color: oklch(86.5% 0.127 207.078);
+    transform: scale(1.2);
 }
 
 .new-todo span:first-child {
@@ -185,6 +196,7 @@ span div:first-child {
     border-radius: 50%;
     transition: all 0.2s ease;
     background-color: #ff6f91;
+    transform: scale(1.5);
 }
 
 .new-projects img:hover {
@@ -194,4 +206,15 @@ span div:first-child {
 
 .submit-div {
    text-align: center;
+}
+
+.project-select {
+    width: auto;
+    padding: 5px;
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 1rem; 
+    color: #333;
+    cursor: pointer;
 }
