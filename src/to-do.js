@@ -1,4 +1,5 @@
 import edit from "./edit.png";
+import deleted from "./delete.png";
 import { format } from "date-fns";
 import { newProjectArray } from "./project-dom";
 
@@ -40,13 +41,11 @@ export function todoFactory(title, date, priority) {
             priorityDiv.innerText = priority;
         },
         displayDelete() {
-            const headingDiv = document.createElement("div");
-            const deleteDiv = document.createElement("div");
+            const deleteImage = document.createElement("img");
+            deleteImage.src = deleted;
             const span = document.createElement("span");
             toDoList.lastChild.append(span);
-            span.append(headingDiv);
-            span.append(deleteDiv);
-            headingDiv.innerText = "Delete";
+            span.append(deleteImage);
         },
         displayEdit() {
             const editImage = document.createElement("img");

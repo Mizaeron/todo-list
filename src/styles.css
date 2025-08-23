@@ -196,7 +196,6 @@ background: #144E75; }
     border-radius: 50%;
     transition: all 0.2s ease;
     background-color: #ff6f91;
-    transform: scale(1.5);
 }
 
 .new-projects img:hover {
