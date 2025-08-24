@@ -68,7 +68,19 @@ export function todoFactory(title, date, priority) {
                 const option = document.createElement('option');
                 option.textContent = name;
                 select.append(option);
+                
             })   
+            changeProject();
         }
     }
+}
+
+function changeProject() {
+       const selections = document.querySelectorAll("select.project-select");
+
+            selections.forEach((select) => {
+                select.addEventListener("change", (e) => {
+                    console.log("mama");                
+                })
+            })
 }

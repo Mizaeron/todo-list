@@ -203,6 +203,11 @@ background: #144E75; }
     transform: scale(1.2);
 }
 
+#project-form div {
+    display: flex;
+    gap: 5px;
+}
+
 .submit-div {
    text-align: center;
 }
