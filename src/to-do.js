@@ -3,6 +3,8 @@ import deleted from "./delete.png";
 import { format } from "date-fns";
 import { newProjectArray } from "./project-dom";
 
+export const selectedProjects = [];
+
 const toDoList = document.querySelector(".to-do-list");
 const inbox = document.querySelector(".default-project");
 
@@ -80,7 +82,27 @@ function changeProject() {
 
             selections.forEach((select) => {
                 select.addEventListener("change", (e) => {
-                    console.log("mama");                
+                    const selectedTodo = e.target.closest(".new-todo");
+                    const selectionText = e.target.value;
+                    const projectIndex = newProjectArray.indexOf(selectionText);
+                    const projectText = newProjectArray[projectIndex];
+
+                    if (selectionText === projectText) {
+                        selectedTodo.style.display = "none";
+                        const className = projectText.replace(/\s+/g, "-");
+
+                        const existingClasses = Array.from(selectedTodo.classList);
+                        existingClasses.forEach((cls) => {
+                            if(cls.startsWith("project-")) {
+                                selectedTodo.classList.remove(cls);
+                            }
+                        })
+                        selectedTodo.classList.add(`project-${className}`);
+
+                        if (!selectedProjects.includes(projectText)) {
+                            selectedProjects.push(projectText);
+                        }
+                    }
                 })
             })
 }

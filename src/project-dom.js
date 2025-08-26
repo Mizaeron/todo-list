@@ -1,3 +1,4 @@
+import { selectedProjects } from "./to-do";
 import trash from "./trash-2.svg";
 export const newProjectArray = [];
 
@@ -24,13 +25,31 @@ export function addProject() {
                 const optionList = Array.from(selectMenu.options);
 
                 optionList.forEach(option => {
-                    if (option.text.trim() === textContent) {
-                        selectMenu.remove(option.index);
+                    if (option.textContent.trim() === textContent) {
+                        selectMenu.remove(optionList.indexOf(option));
                     }
                 })
             })
         }
     }
+
+    const projectName = e.target.innerText;
+    const todoIndex = selectedProjects.indexOf(projectName);
+    const todoName = selectedProjects[todoIndex];
+
+    console.log("Selected projects array:", selectedProjects);
+    console.log(`selected project array: ${selectedProjects}`);
+    console.log("New Project Array: ", newProjectArray);
+    console.log(todoName);
+
+    if (todoIndex !== -1) {
+        const todoNameFixed = todoName.replace(/\s+/g, "-");
+        const classElements = document.getElementsByClassName(`project-${todoNameFixed}`);
+        Array.from(classElements).forEach((element) => {
+            element.style.display = "flex";
+        })
+    }
+
 })
 
     newProjectBtn.addEventListener("click", (e) => {
