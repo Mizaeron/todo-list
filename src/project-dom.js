@@ -36,6 +36,11 @@ export function addProject() {
     const projectName = e.target.innerText;
     const todoIndex = selectedProjects.indexOf(projectName);
     const todoName = selectedProjects[todoIndex];
+    const allElements = document.querySelectorAll(".new-todo");
+
+    allElements.forEach((element) => {
+        element.style.display = "none";
+    })
 
     console.log("Selected projects array:", selectedProjects);
     console.log(`selected project array: ${selectedProjects}`);
@@ -49,6 +54,7 @@ export function addProject() {
             element.style.display = "flex";
         })
     }
+    if (todoName === undefined) console.log("kek");
 
 })
 
