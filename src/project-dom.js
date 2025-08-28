@@ -9,7 +9,8 @@ export function addProject() {
 
     newProjectContainer.addEventListener("click", (e) => {
         const projectEl = e.target.closest(".new-project");
-        if(!projectEl) return;
+        const projectDefault = e.target.closest(".default-project");
+        if(!projectEl && !projectDefault) return;
     if (e.target && e.target.parentElement.classList.contains("new-project")) {
         const textContent = projectEl.innerText.trim();
         
@@ -36,16 +37,22 @@ export function addProject() {
     const projectName = e.target.innerText;
     const todoIndex = selectedProjects.indexOf(projectName);
     const todoName = selectedProjects[todoIndex];
-    const allElements = document.querySelectorAll(".new-todo");
-
-    allElements.forEach((element) => {
-        element.style.display = "none";
+    const allTodo = document.querySelectorAll(".new-todo");
+    const allTodoArray = Array.from(allTodo);
+    const inboxTodos = allTodoArray.filter(todo => {
+        return !Array.from(todo.classList).some(className => className.startsWith("project-"));
     })
 
-    console.log("Selected projects array:", selectedProjects);
-    console.log(`selected project array: ${selectedProjects}`);
-    console.log("New Project Array: ", newProjectArray);
     console.log(todoName);
+    console.log(e.target.innerText);
+    console.log(selectedProjects);
+    console.log(inboxTodos);
+
+
+    if (todoName === undefined) {
+        allTodoArray.forEach(todo => todo.style.display = "none");
+        inboxTodos.forEach(todo => todo.style.display = "flex");
+    }
 
     if (todoIndex !== -1) {
         const todoNameFixed = todoName.replace(/\s+/g, "-");
@@ -53,9 +60,8 @@ export function addProject() {
         Array.from(classElements).forEach((element) => {
             element.style.display = "flex";
         })
+        inboxTodos.forEach(todo => todo.style.display = "none");
     }
-    if (todoName === undefined) console.log("kek");
-
 })
 
     newProjectBtn.addEventListener("click", (e) => {
@@ -94,20 +100,3 @@ export function addProject() {
 
     
 }
-
-// export function defaultProject() {
-
-// const inbox = document.querySelector(".default-project");
-// const trashImage = document.createElement("img");
-// trashImage.src = trash;
-// inbox.append(trashImage);
-
-// inbox.addEventListener("mouseover", (e) => {
-//     trashImage.style.display = "block";
-// })
-
-// inbox.addEventListener("mouseout", (e) => {
-//     trashImage.style.display = "none";
-// })
-
-// }
