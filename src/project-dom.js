@@ -43,22 +43,19 @@ export function addProject() {
         return !Array.from(todo.classList).some(className => className.startsWith("project-"));
     })
 
-    console.log(todoName);
-    console.log(e.target.innerText);
-    console.log(selectedProjects);
-    console.log(inboxTodos);
-
-
     if (todoName === undefined) {
         allTodoArray.forEach(todo => todo.style.display = "none");
         inboxTodos.forEach(todo => todo.style.display = "flex");
     }
 
     if (todoIndex !== -1) {
+        allTodoArray.forEach(todo => todo.style.display = "none");
         const todoNameFixed = todoName.replace(/\s+/g, "-");
         const classElements = document.getElementsByClassName(`project-${todoNameFixed}`);
         Array.from(classElements).forEach((element) => {
             element.style.display = "flex";
+            console.log(allTodoArray);
+            console.log(classElements);
         })
         inboxTodos.forEach(todo => todo.style.display = "none");
     }
