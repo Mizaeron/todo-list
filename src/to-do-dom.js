@@ -45,3 +45,15 @@ export function submitForm(callback) {
     })
 }
 
+export function completeTask() {
+
+    const todos = document.querySelector(".to-do-list");
+
+    todos.addEventListener("change", e => {
+        if(e.target.tagName === "INPUT" && e.target.type === "checkbox") {
+           const parentDiv = e.target.closest("div");
+
+           parentDiv.style.textDecoration = "line-through";
+        }
+    })
+}
