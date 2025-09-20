@@ -50,10 +50,11 @@ export function completeTask() {
     const todos = document.querySelector(".to-do-list");
 
     todos.addEventListener("change", e => {
-        if(e.target.tagName === "INPUT" && e.target.type === "checkbox") {
-           const parentDiv = e.target.closest("div");
-
-           parentDiv.style.textDecoration = "line-through";
+        const parentDiv = e.target.closest("div");
+        if(e.target.tagName === "INPUT" && e.target.type === "checkbox" && e.target.checked) {
+            parentDiv.style.textDecoration = "line-through";
+        } else {
+            parentDiv.style.textDecoration = "none";
         }
     })
 }
