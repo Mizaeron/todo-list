@@ -212,7 +212,8 @@ background: #144E75; }
    text-align: center;
 }
 
-.project-select {
+.project-select,
+ span > select  {
     width: auto;
     padding: 5px;
     border: 1px solid #ccc; 

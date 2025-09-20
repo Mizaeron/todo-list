@@ -36,11 +36,54 @@ export function todoFactory(title, date, priority) {
             dateDiv.innerText = format(new Date(date), 'HH:mm dd/MM/yyyy');
         },
         displayPriority() {
-            const priorityDiv = document.createElement("div");
             const span = document.createElement("span");
+            const select = document.createElement("select");
+            const option = document.createElement("option");
             toDoList.lastChild.append(span);
-            span.append(priorityDiv);
-            priorityDiv.innerText = priority;
+            span.append(select);
+            select.append(option);
+            option.innerText = priority;
+
+            if(option.innerText === "high") {
+                option.style.background = "red";
+                select.style.background = option.style.background;
+                const medium = document.createElement("option");
+                const low = document.createElement("option");
+                medium.innerText = "medium";
+                medium.style.background = "green";
+                low.innerText = "low";
+                low.style.background = "yellow";
+                select.append(medium, low);
+            } else if(option.innerText === "medium") {
+                option.style.background = "green";
+                select.style.background = option.style.background;
+                const low = document.createElement("option");
+                const high = document.createElement("option");
+                high.innerText = "high";
+                high.style.background = "Red";
+                low.innerText = "low";
+                low.style.background = "Yellow";
+                select.append(high, low);
+            } else {
+                option.style.background = "yellow";
+                select.style.background = option.style.background;
+                const medium = document.createElement("option");
+                const high = document.createElement("option");
+                high.innerText = "high";
+                high.style.background = "Red";
+                medium.innerText = "medium";
+                medium.style.background = "Green";
+                select.append(high, medium);
+            }
+
+            select.addEventListener("change", e => {
+                const selectedOption = select.options[select.selectedIndex];
+                switch (selectedOption.text) {
+                    case "high": select.style.background = "red"; break;
+                    case "medium": select.style.background = "green"; break;
+                    case "low": select.style.background = "yellow"; break;
+                }
+            })
         },
         displayDelete() {
             const deleteImage = document.createElement("img");
