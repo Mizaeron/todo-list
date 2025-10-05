@@ -12,7 +12,7 @@ const todos = [];
 
 submitForm((formProps) => {
     const { title, dueDate, priority } = formProps;
-    const newTodo = todoFactory(title, dueDate, priority);
+    const newTodo = todoFactory(title, dueDate, priority, description);
     
     newTodo.displayCheckbox();
     newTodo.displayTitle();
@@ -21,6 +21,7 @@ submitForm((formProps) => {
     newTodo.displayDelete();
     newTodo.displayEdit();
     newTodo.selectProject();
+    newTodo.displayDescription();
 
     todos.push(formProps);
 })

@@ -8,7 +8,7 @@ export const selectedProjects = [];
 const toDoList = document.querySelector(".to-do-list");
 const inbox = document.querySelector(".default-project");
 
-export function todoFactory(title, date, priority) {
+export function todoFactory(title, date, priority, description) {
     return {
         displayCheckbox() {
             const div = document.createElement("div");
@@ -33,7 +33,7 @@ export function todoFactory(title, date, priority) {
             const span = document.createElement("span");
             toDoList.lastChild.append(span);
             span.append(dateDiv);
-            dateDiv.innerText = format(new Date(date), 'HH:mm dd/MM/yyyy');
+            dateDiv.innerText = format(new Date(date), 'HH:mm EEEE [do MMM yyyy]');
         },
         displayPriority() {
             const span = document.createElement("span");
@@ -94,8 +94,10 @@ export function todoFactory(title, date, priority) {
         },
         displayEdit() {
             const editImage = document.createElement("img");
+
             editImage.src = edit;
             const span = document.createElement("span");
+            span.classList.add("edit");
             toDoList.lastChild.append(span);
             span.append(editImage);
         },
@@ -116,6 +118,20 @@ export function todoFactory(title, date, priority) {
                 
             })   
             changeProject();
+        },
+        displayDescription() {
+            const edit = document.querySelector(".edit");
+            const descriptionDiv = document.createElement("div");
+            const span = document.createElement("span");
+            span.classList.add("description");
+            toDoList.lastChild.append(span);
+            span.append(descriptionDiv);
+            descriptionDiv.innerText = description.value;
+            span.style.display = "none";
+
+            edit.addEventListener("click", e => {
+                span.style.display = "flex";
+            });
         }
     }
 }
