@@ -7,6 +7,7 @@ export const selectedProjects = [];
 
 const toDoList = document.querySelector(".to-do-list");
 const inbox = document.querySelector(".default-project");
+let index = 0;
 
 export function todoFactory(title, date, priority, description) {
     return {
@@ -120,19 +121,52 @@ export function todoFactory(title, date, priority, description) {
             changeProject();
         },
         displayDescription() {
-            const edit = document.querySelector(".edit");
-            const descriptionDiv = document.createElement("div");
-            const span = document.createElement("span");
-            span.classList.add("description");
-            toDoList.lastChild.append(span);
-            span.append(descriptionDiv);
-            descriptionDiv.innerText = description.value;
-            span.style.display = "none";
+           const editButtons = document.querySelectorAll(".edit");
 
-            edit.addEventListener("click", e => {
-                span.style.display = "flex";
-            });
+           const span = document.createElement("span");
+           const descriptionDiv = document.createElement("div");
+
+           span.classList.add("description");
+           span.setAttribute("data-index", index);
+           toDoList.lastChild.append(span);
+           
+           descriptionDiv.innerText = description.value;
+           span.append(descriptionDiv);
+           span.style.display = "none";
+           
+           const edit = editButtons[index];
+           edit.addEventListener("click", e => {
+        if (span.style.display === "none") {
+            span.style.display = "flex";
+        } else {
+            span.style.display = "none";
         }
+    });
+
+    descriptionDiv.addEventListener("click", () => makeEditable(descriptionDiv));
+
+    index++;
+
+
+function makeEditable(descriptionDiv) {
+    const currentText = descriptionDiv.textContent;
+    const input = document.createElement("textarea");
+    input.value = currentText;
+    descriptionDiv.innerHTML = ""; // Clear the current content
+    descriptionDiv.appendChild(input); // Add the input field
+
+       input.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                // Prevent default action for Enter key
+                event.preventDefault();
+                descriptionDiv.textContent = input.value; // Update the description
+            }
+        });
+    
+    input.focus(); // Focus on the input field
+}
+}
+
     }
 }
 
