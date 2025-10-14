@@ -89,9 +89,20 @@ export function todoFactory(title, date, priority, description) {
         displayDelete() {
             const deleteImage = document.createElement("img");
             deleteImage.src = deleted;
+
             const span = document.createElement("span");
+            span.classList.add("delete");
             toDoList.lastChild.append(span);
             span.append(deleteImage);
+
+            span.addEventListener("click", e => {
+            const parentDiv = e.target.closest("div");
+        
+            if(e.target.parentElement.className.includes("delete")) {
+            parentDiv.remove();
+        }
+    })
+            
         },
         displayEdit() {
             const editImage = document.createElement("img");

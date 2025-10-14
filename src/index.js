@@ -28,6 +28,6 @@ submitForm((formProps) => {
 
 document.querySelector(".console").addEventListener("click", () => {
     console.log(todos);
-    console.log(newProjectArray);
+    console.log(newProjectArray, index);
 })
 
