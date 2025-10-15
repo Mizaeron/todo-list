@@ -58,3 +58,46 @@ export function completeTask() {
         }
     })
 }
+
+export function deleteEditTask() {
+    const toDoList = document.querySelector(".to-do-list");
+    const descriptionDiv = document.querySelector(".description > div");
+
+    toDoList.addEventListener("click", e => {
+        const delBtn = e.target.closest(".delete");
+        if(delBtn) {
+            const parentDiv = delBtn.closest("div");
+            if(parentDiv) parentDiv.remove();
+            return;
+        }
+
+        const editBtn = e.target.closest(".edit");
+        if(editBtn) {
+            const itemDiv = editBtn.closest("div");
+            const desc = itemDiv && itemDiv.querySelector(".description");
+            if(!desc) return;
+            desc.style.display = desc.style.display === "none" ? "flex" : "none";
+            return;
+        }
+    })
+
+    // descriptionDiv.addEventListener("click", () => makeEditable(descriptionDiv));
+
+    function makeEditable(descriptionDiv) {
+        const currentText = descriptionDiv.textContent;
+        const input = document.createElement("textarea");
+        input.value = currentText;
+        descriptionDiv.innerHTML = ""; 
+        descriptionDiv.appendChild(input); 
+    
+           input.addEventListener("keydown", (event) => {
+                if (event.key === "Enter") {
+                    
+                    event.preventDefault();
+                    descriptionDiv.textContent = input.value; 
+                }
+            });
+        
+        input.focus();
+    }
+}

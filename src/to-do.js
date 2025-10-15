@@ -93,16 +93,7 @@ export function todoFactory(title, date, priority, description) {
             const span = document.createElement("span");
             span.classList.add("delete");
             toDoList.lastChild.append(span);
-            span.append(deleteImage);
-
-            span.addEventListener("click", e => {
-            const parentDiv = e.target.closest("div");
-        
-            if(e.target.parentElement.className.includes("delete")) {
-            parentDiv.remove();
-        }
-    })
-            
+            span.append(deleteImage);    
         },
         displayEdit() {
             const editImage = document.createElement("img");
@@ -144,38 +135,8 @@ export function todoFactory(title, date, priority, description) {
            descriptionDiv.innerText = description.value;
            span.append(descriptionDiv);
            span.style.display = "none";
-           
-           const edit = editButtons[index];
-           edit.addEventListener("click", e => {
-        if (span.style.display === "none") {
-            span.style.display = "flex";
-        } else {
-            span.style.display = "none";
-        }
-    });
-
-    descriptionDiv.addEventListener("click", () => makeEditable(descriptionDiv));
 
     index++;
-
-
-function makeEditable(descriptionDiv) {
-    const currentText = descriptionDiv.textContent;
-    const input = document.createElement("textarea");
-    input.value = currentText;
-    descriptionDiv.innerHTML = ""; // Clear the current content
-    descriptionDiv.appendChild(input); // Add the input field
-
-       input.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                // Prevent default action for Enter key
-                event.preventDefault();
-                descriptionDiv.textContent = input.value; // Update the description
-            }
-        });
-    
-    input.focus(); // Focus on the input field
-}
 }
 
     }

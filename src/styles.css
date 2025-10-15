@@ -72,16 +72,16 @@ nav {
 }
 
 .to-do > div {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+        box-shadow: 2px 2px 7px 1px #1C6EA4;
 }
 
 .todo-headline {
     font-family: Impact;
     font-size: 3rem;
     font-weight: bold;
-    color: #1359ca;
-    text-shadow: 3px 2px 2px #1C6EA4;
     margin: auto;
+    letter-spacing: 1px;
 }
 
 .to-dos {
@@ -92,6 +92,7 @@ nav {
 }
 
 .todo-button {
+    justify-self: center;
     width: 300px;
     border-radius: 10px;
     font-size: 1.5rem;
@@ -106,17 +107,18 @@ background: #1C6EA4; }
 background: #144E75; }
 
 .to-do-list {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 5px;
 }
 
 .new-todo {
     width: auto;
     height: auto;
-    border: 1px solid black;
     justify-content: space-around;
     padding: 5px;
     display: flex;
+    margin: 7px;
+    box-shadow: 1px 1px 4px 0px #1C6EA4;
 }
 
 .new-todo > span {
