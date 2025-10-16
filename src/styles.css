@@ -208,9 +208,13 @@ background: #144E75; }
     transform: scale(1.2);
 }
 
-#project-form div {
+#project-form div:first-child {
     display: flex;
     gap: 5px;
+}
+
+#new-project {
+    flex-grow: 1;
 }
 
 .submit-div {
@@ -241,4 +245,9 @@ background: #144E75; }
     justify-content: center;
     align-items: center;
     color: rgb(12, 12, 12);
+}
+
+.default-project {
+    border-bottom: 2px solid black;
+    font-weight: bold;
 }
