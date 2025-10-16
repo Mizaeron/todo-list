@@ -132,6 +132,7 @@ export function todoFactory(title, date, priority, description) {
            span.setAttribute("data-index", index);
            toDoList.lastChild.append(span);
            
+           descriptionDiv.classList.add("editDescr");
            descriptionDiv.innerText = description.value;
            span.append(descriptionDiv);
            span.style.display = "none";

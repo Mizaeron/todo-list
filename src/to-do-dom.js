@@ -61,7 +61,6 @@ export function completeTask() {
 
 export function deleteEditTask() {
     const toDoList = document.querySelector(".to-do-list");
-    const descriptionDiv = document.querySelector(".description > div");
 
     toDoList.addEventListener("click", e => {
         const delBtn = e.target.closest(".delete");
@@ -79,11 +78,17 @@ export function deleteEditTask() {
             desc.style.display = desc.style.display === "none" ? "flex" : "none";
             return;
         }
+
+        const descriptionDivs = document.querySelectorAll(".editDescr");
+        if(descriptionDivs.length > 0) {
+            descriptionDivs.forEach((descriptionDiv) => {
+                makeEditable(descriptionDiv);
+            })
+        }
     })
+}
 
-    // descriptionDiv.addEventListener("click", () => makeEditable(descriptionDiv));
-
-    function makeEditable(descriptionDiv) {
+function makeEditable(descriptionDiv) {
         const currentText = descriptionDiv.textContent;
         const input = document.createElement("textarea");
         input.value = currentText;
@@ -100,4 +105,3 @@ export function deleteEditTask() {
         
         input.focus();
     }
-}
