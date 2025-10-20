@@ -62,7 +62,8 @@ export function addProject() {
 })
 
     newProjectBtn.addEventListener("click", (e) => {
-
+        const projectName = newProjectInput.value;
+        
         if (newProjectInput.value.length < 2) {
             alert("project name must have at least 2 characters!");
             e.preventDefault();
@@ -93,7 +94,34 @@ export function addProject() {
          option.innerText = newProjectDiv.innerText;
          document.querySelectorAll("select.project-select").forEach(sel => sel.append(option.cloneNode(true)));
 
+         saveToLocalStorage(projectName);
+         
+         console.log(typeof newProjectDiv);
 }})
 
-    
+      return function() {
+            return projectName;
+         }
 }
+
+function saveToLocalStorage(projectName) {
+    let projects = JSON.parse(localStorage.getItem('projects')) || [];
+    projects.push(projectName);
+    localStorage.setItem('projects', JSON.stringify(projects));
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const projects = JSON.parse(localStorage.getItem('projects') || []);
+    projects.forEach(project => {
+        const newProjectDiv = document.createElement("div");
+        newProjectDiv.classList.add("new-project");
+
+        newProjectDiv.innerText = project;
+
+        const trashImage = document.createElement("img");
+        trashImage.src = trash;
+        
+        document.querySelector('.new-projects').append(newProjectDiv);
+        newProjectDiv.append(trashImage);
+    })
+})

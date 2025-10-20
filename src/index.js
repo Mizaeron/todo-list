@@ -26,9 +26,3 @@ submitForm((formProps) => {
 
     todos.push(formProps);
 })
-
-document.querySelector(".console").addEventListener("click", () => {
-    console.log(todos);
-    console.log(newProjectArray, index);
-})
-
