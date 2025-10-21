@@ -60,68 +60,64 @@ export function addProject() {
         inboxTodos.forEach(todo => todo.style.display = "none");
     }
 })
-
-    newProjectBtn.addEventListener("click", (e) => {
+        newProjectBtn.addEventListener("click", (e) => {
         const projectName = newProjectInput.value;
-        
-        if (newProjectInput.value.length < 2) {
-            alert("project name must have at least 2 characters!");
+
+        if (projectName.length < 2) {
+            alert("Project name must have at least 2 characters!");
             e.preventDefault();
         } else {
-        e.preventDefault();
-        const newProjectDiv = document.createElement("div");
-        newProjectDiv.classList.add("new-project");
-
-        newProjectDiv.innerText = `${newProjectInput.value}`;
-
-        const trashImage = document.createElement("img");
-        trashImage.src = trash;
-        
-        newProjectContainer.append(newProjectDiv);
-        newProjectDiv.append(trashImage);
-        newProjectInput.value = "";
-
-        newProjectDiv.addEventListener("mouseover", (e) => {
-        trashImage.style.display = "block";
-})
-
-        newProjectDiv.addEventListener("mouseout", (e) => {
-        trashImage.style.display = "none";
-})
-         newProjectArray.push(newProjectDiv.innerText);
-         
-         const option = document.createElement("option");
-         option.innerText = newProjectDiv.innerText;
-         document.querySelectorAll("select.project-select").forEach(sel => sel.append(option.cloneNode(true)));
-
-         saveToLocalStorage(projectName);
-         
-         console.log(typeof newProjectDiv);
-}})
-
-      return function() {
-            return projectName;
-         }
+            e.preventDefault();
+            createProjectElement(newProjectContainer, projectName);
+            newProjectInput.value = "";
+            newProjectArray.push(projectName);
+            saveToLocalStorage(projectName);
+        }
+    });
+   
 }
 
 function saveToLocalStorage(projectName) {
-    let projects = JSON.parse(localStorage.getItem('projects')) || [];
+    let projects = JSON.parse(localStorage.getItem('projects') || '[]');
     projects.push(projectName);
     localStorage.setItem('projects', JSON.stringify(projects));
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const projects = JSON.parse(localStorage.getItem('projects') || []);
-    projects.forEach(project => {
-        const newProjectDiv = document.createElement("div");
-        newProjectDiv.classList.add("new-project");
+    const projects = JSON.parse(localStorage.getItem('projects') || '[]');
 
-        newProjectDiv.innerText = project;
-
-        const trashImage = document.createElement("img");
-        trashImage.src = trash;
-        
-        document.querySelector('.new-projects').append(newProjectDiv);
-        newProjectDiv.append(trashImage);
-    })
+     projects.forEach(project => {
+        createProjectElement(document.querySelector(".new-projects"), project);
+    });
 })
+
+function removeProject(projectToRemove) {
+    let projects = JSON.parse(localStorage.getItem('projects') || '[]');
+    projects = projects.filter(project => project !== projectToRemove);
+    localStorage.setItem('projects', JSON.stringify(projects));
+}
+
+function createProjectElement(container, projectName) {
+    const newProjectDiv = document.createElement("div");
+    newProjectDiv.classList.add("new-project");
+    newProjectDiv.innerText = projectName;
+
+    const trashImage = document.createElement("img");
+    trashImage.src = trash;
+
+    newProjectDiv.append(trashImage);
+    container.append(newProjectDiv);
+
+    newProjectDiv.addEventListener("mouseover", () => {
+        trashImage.style.display = "block";
+    });
+
+    newProjectDiv.addEventListener("mouseout", () => {
+        trashImage.style.display = "none";
+    });
+
+    trashImage.addEventListener('click', () => {
+        removeProject(projectName);
+        newProjectDiv.remove();
+    });
+}
