@@ -121,6 +121,7 @@ export function todoFactory(title, date, priority, description) {
                 
             })   
             changeProject();
+            console.log(newProjectArray);
         },
         displayDescription() {
            const editButtons = document.querySelectorAll(".edit");

@@ -70,7 +70,7 @@ export function addProject() {
             e.preventDefault();
             createProjectElement(newProjectContainer, projectName);
             newProjectInput.value = "";
-            newProjectArray.push(projectName);
+            newProjectArray.push(projectName)
             saveToLocalStorage(projectName);
         }
     });
@@ -120,4 +120,8 @@ function createProjectElement(container, projectName) {
         removeProject(projectName);
         newProjectDiv.remove();
     });
+
+         const option = document.createElement("option");
+         option.innerText = newProjectDiv.innerText;
+         document.querySelectorAll("select.project-select").forEach(sel => sel.append(option.cloneNode(true)));
 }
