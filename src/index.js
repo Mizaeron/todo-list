@@ -1,13 +1,19 @@
 import "./styles.css";
 import { addProject, newProjectArray } from "./project-dom";
-import { displayForm, closeForm, submitForm, completeTask, deleteEditTask } from "./to-do-dom";
+import {
+  displayForm,
+  closeForm,
+  submitForm,
+  completeTask,
+  deleteEditTask,
+} from "./to-do-dom";
 import { todoFactory } from "./to-do";
 
 const clear = document.createElement("button");
-clear.addEventListener("click", e => {
-    localStorage.clear();
-    location.reload();
-})
+clear.addEventListener("click", (e) => {
+  localStorage.clear();
+  location.reload();
+});
 document.body.append(clear);
 
 addProject();
@@ -18,41 +24,39 @@ deleteEditTask();
 
 const todos = [];
 
-
-
 submitForm((formProps) => {
-    const { title, dueDate, priority } = formProps;
-    const newTodo = todoFactory(title, dueDate, priority, description);
-    
-    displayTodo(newTodo);
-    saveToLocalStorage(formProps);
-})
+  const { title, dueDate, priority } = formProps;
+  const newTodo = todoFactory(title, dueDate, priority);
 
-function saveToLocalStorage (formProps) {
-    const existingData = JSON.parse(localStorage.getItem("formProps")) || [];
+  displayTodo(newTodo);
+  saveToLocalStorage(formProps);
+});
 
-    existingData.push(formProps);
+function saveToLocalStorage(formProps) {
+  const existingData = JSON.parse(localStorage.getItem("formProps")) || [];
 
-    localStorage.setItem("formProps", JSON.stringify(existingData));
+  existingData.push(formProps);
+
+  localStorage.setItem("formProps", JSON.stringify(existingData));
 }
 
 const savedData = JSON.parse(localStorage.getItem("formProps"));
 if (savedData) {
-    savedData.forEach(item => {
-        const { title, dueDate, priority } = item;
-        const newTodo = todoFactory(title, dueDate, priority, description);
+  savedData.forEach((item) => {
+    const { title, dueDate, priority } = item;
+    const newTodo = todoFactory(title, dueDate, priority);
 
-           displayTodo(newTodo);
-    })
+    displayTodo(newTodo);
+  });
 }
 
 function displayTodo(todoInstance) {
-    todoInstance.displayCheckbox();
-    todoInstance.displayTitle();
-    todoInstance.displayDate();
-    todoInstance.displayPriority();
-    todoInstance.displayDelete();
-    todoInstance.displayEdit();
-    todoInstance.selectProject();
-    todoInstance.displayDescription();
+  todoInstance.displayCheckbox();
+  todoInstance.displayTitle();
+  todoInstance.displayDate();
+  todoInstance.displayPriority();
+  todoInstance.displayDelete();
+  todoInstance.displayEdit();
+  todoInstance.selectProject();
+  todoInstance.displayDescription();
 }
